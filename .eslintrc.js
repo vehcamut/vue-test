@@ -7,6 +7,8 @@ module.exports = {
     'plugin:vue/essential',
     '@vue/airbnb',
     '@vue/typescript/recommended',
+    'airbnb',
+    'airbnb-base',
   ],
   parserOptions: {
     ecmaVersion: 2020,
