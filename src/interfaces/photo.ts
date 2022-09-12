@@ -5,7 +5,9 @@ export interface IPhoto {
 }
 
 export interface IPhotoState {
+  dialogVisible: boolean;
   photos: IPhoto[];
+  currentPhoto: IPhoto;
 }
 
 export interface IStoreState {

@@ -15,8 +15,8 @@ export default defineComponent({
   data() {
     return {
       photos: [] as IPhoto[],
-      currentPhoto: {} as IPhoto,
-      dialogVisible: false,
+      // currentPhoto: {} as IPhoto,
+      // dialogVisible: false,
     };
   },
   /*= > ({
@@ -35,10 +35,10 @@ export default defineComponent({
     addPhoto(photo: IPhoto) {
       this.photos.push(photo);
     },
-    openPhoto(photo: IPhoto) {
-      this.currentPhoto = photo;
-      this.dialogVisible = true;
-    },
+    // openPhoto(photo: IPhoto) {
+    //   this.currentPhoto = photo;
+    //   this.dialogVisible = true;
+    // },
   },
 });
 </script>
@@ -52,10 +52,9 @@ export default defineComponent({
         v-for="photo in $store.getters.getAllPhotos"
         :key="photo.id"
         :photo="photo"
-        @openPhoto="openPhoto"
       />
     </v-row>
-    <PhotoDialog :photo="currentPhoto" v-model="dialogVisible" />
+    <PhotoDialog/>
   </v-container>
 </template>
 
