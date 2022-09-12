@@ -3,3 +3,11 @@ export interface IPhoto {
   title: string;
   url: string;
 }
+
+export interface IPhotoState {
+  photos: IPhoto[];
+}
+
+export interface IStoreState {
+  photoModule: IPhotoState;
+}

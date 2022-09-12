@@ -25,12 +25,13 @@ export default defineComponent({
   }), */
 
   mounted() {
-    this.fetchTodo();
+    // this.fetchTodo();
+    this.$store.dispatch('fetchPhotos');
   },
   methods: {
-    fetchTodo() {
-      this.$axios.get('https://jsonplaceholder.typicode.com/photos?_limit=10').then((response) => { this.photos = response.data; });
-    },
+    // fetchTodo() {
+    //   this.$axios.get('https://jsonplaceholder.typicode.com/photos?_limit=10').then((response) => { this.photos = response.data; });
+    // },
     addPhoto(photo: IPhoto) {
       this.photos.push(photo);
     },
@@ -44,9 +45,15 @@ export default defineComponent({
 
 <template>
   <v-container>
-    <PhotoFormVue @addPhoto="addPhoto"></PhotoFormVue>
+    <PhotoFormVue v-if="photos.length < 11" @addPhoto="addPhoto"></PhotoFormVue>
+    <div v-else>Вы не можете добавить больше фотографий</div>
     <v-row>
-      <PhotoItemVue v-for="photo in photos" :key="photo.id" :photo="photo" @openPhoto="openPhoto" />
+      <PhotoItemVue
+        v-for="photo in $store.getters.getAllPhotos"
+        :key="photo.id"
+        :photo="photo"
+        @openPhoto="openPhoto"
+      />
     </v-row>
     <PhotoDialog :photo="currentPhoto" v-model="dialogVisible" />
   </v-container>
