@@ -1,5 +1,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { mapMutations } from 'vuex';
 import { IPhoto } from '../../interfaces';
 
 export default defineComponent({
@@ -10,9 +11,10 @@ export default defineComponent({
     },
   },
   methods: {
+    ...mapMutations(['setCurrentPhoto', 'showDialog', 'hideDialog']),
     openPhoto() {
-      this.$store.commit('setCurrentPhoto', this.photo);
-      this.$store.commit('showDialog');
+      this.setCurrentPhoto(this.photo);
+      this.showDialog();
       // this.$emit('openPhoto', this.photo);
     },
   },
