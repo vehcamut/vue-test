@@ -13,7 +13,14 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2020,
   },
+  plugins: ['@typescript-eslint/eslint-plugin'],
+  ignorePatterns: ['.eslintrc.js'],
   rules: {
+    //"@typescript-eslint/semi": ["error", "always"],
+    "@typescript-eslint/member-delimiter-style": "warn",
+   // "@typscript-eslint/semi": "error",//["error", "always"],
+    //"semi": "off",
+    "no-unexpected-multiline": "error",
     'import/extensions': [
       'error',
       'ignorePackages',
@@ -27,4 +34,4 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
   },
-};
+}
