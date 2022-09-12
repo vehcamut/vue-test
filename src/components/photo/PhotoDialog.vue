@@ -30,6 +30,11 @@ export default defineComponent({
       this.$emit('input', newValue);
     },
   },
+  computed: {
+    full_title() {
+      return `Название фотографии - ${this.photo.title}`;
+    },
+  },
 });
 </script>
 
@@ -37,7 +42,7 @@ export default defineComponent({
   <v-dialog v-model="dialogVisible" max-width="600">
     <v-card>
       <v-card-title primary-title>
-        {{photo.title}}
+        {{full_title}}
       </v-card-title>
       <v-card-text>
         <v-img :src="`${photo.url}`"></v-img>
