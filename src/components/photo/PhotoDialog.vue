@@ -8,13 +8,28 @@ export default defineComponent({
       type: Object as () => IPhoto,
       required: true,
     },
-    dialogVisible: {
+    value: {
       type: Boolean,
       default: false,
     },
   },
-  data: () => ({
-  }),
+  created() {
+    this.dialogVisible = this.value;
+  },
+
+  data() {
+    return {
+      dialogVisible: false,
+    };
+  },
+  watch: {
+    value(newValue) {
+      this.dialogVisible = newValue;
+    },
+    dialogVisible(newValue) {
+      this.$emit('input', newValue);
+    },
+  },
 });
 </script>
 
